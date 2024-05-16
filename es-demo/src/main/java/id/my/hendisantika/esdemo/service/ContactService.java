@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -35,5 +36,13 @@ public class ContactService {
 
     public void delete(Contact contact) {
         contactRepository.delete(contact);
+    }
+
+    public Contact find(String id) {
+        Optional<Contact> result = contactRepository.findById(id);
+        if (result.isEmpty()) {
+            throw new IllegalArgumentException("Unable to find contact with ID " + id);
+        }
+        return result.get();
     }
 }
