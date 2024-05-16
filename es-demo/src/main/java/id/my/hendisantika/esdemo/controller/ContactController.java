@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -58,6 +59,19 @@ public class ContactController {
         ContactResponse response = new ContactResponse();
         try {
             Contact result = contactService.findByName(name);
+            response.setRow(result);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.setError(e.getMessage());
+            return ResponseEntity.internalServerError().body(response);
+        }
+    }
+
+    @PostMapping("/contacts")
+    public ResponseEntity<ContactResponse> save(Contact contact) {
+        ContactResponse response = new ContactResponse();
+        try {
+            Contact result = contactService.save(contact);
             response.setRow(result);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
