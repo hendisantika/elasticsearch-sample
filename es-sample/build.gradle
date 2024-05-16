@@ -10,10 +10,9 @@ repositories {
 }
 
 dependencies {
-    implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:8.13.4')
+    implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:7.17.21')
     implementation('com.fasterxml.jackson.core:jackson-databind:2.17.1')
     testImplementation platform('org.junit:junit-bom:5.10.0')
-    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
     testImplementation 'org.junit.jupiter:junit-jupiter'
