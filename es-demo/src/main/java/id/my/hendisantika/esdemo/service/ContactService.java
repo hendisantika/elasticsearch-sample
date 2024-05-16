@@ -26,12 +26,14 @@ public class ContactService {
     private final ContactRepository contactRepository;
 
     public List<Contact> list() {
-        List<Contact> result = StreamSupport.stream(contactRepository.findAll().spliterator(), false).collect(Collectors.toList());
-        return result;
+        return StreamSupport.stream(contactRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 
     public Contact save(Contact contact) {
-        Contact result = contactRepository.save(contact);
-        return result;
+        return contactRepository.save(contact);
+    }
+
+    public void delete(Contact contact) {
+        contactRepository.delete(contact);
     }
 }
