@@ -1,5 +1,7 @@
 package id.my.hendisantika.model;
 
+import java.util.Objects;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : elasticsearch-sample
