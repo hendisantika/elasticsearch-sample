@@ -52,4 +52,17 @@ public class ContactController {
             return ResponseEntity.internalServerError().body(response);
         }
     }
+
+    @GetMapping("/contacts/{name}")
+    public ResponseEntity<ContactResponse> findByName(@PathVariable("name") String name) {
+        ContactResponse response = new ContactResponse();
+        try {
+            Contact result = contactService.findByName(name);
+            response.setRow(result);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.setError(e.getMessage());
+            return ResponseEntity.internalServerError().body(response);
+        }
+    }
 }
