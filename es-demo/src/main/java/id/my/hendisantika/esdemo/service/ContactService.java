@@ -45,4 +45,12 @@ public class ContactService {
         }
         return result.get();
     }
+
+    public Contact findByName(String name) {
+        Optional<Contact> result = contactRepository.findByName(name);
+        if (result.isEmpty()) {
+            throw new IllegalArgumentException("Unable to find contact with name " + name);
+        }
+        return result.get();
+    }
 }
