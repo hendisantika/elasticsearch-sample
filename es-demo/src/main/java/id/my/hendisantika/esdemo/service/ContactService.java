@@ -29,4 +29,9 @@ public class ContactService {
         List<Contact> result = StreamSupport.stream(contactRepository.findAll().spliterator(), false).collect(Collectors.toList());
         return result;
     }
+
+    public Contact save(Contact contact) {
+        Contact result = contactRepository.save(contact);
+        return result;
+    }
 }
