@@ -6,6 +6,7 @@ import id.my.hendisantika.esdemo.service.ContactService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,6 +33,19 @@ public class ContactController {
         try {
             List<Contact> result = contactService.list();
             response.setList(result);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.setError(e.getMessage());
+            return ResponseEntity.internalServerError().body(response);
+        }
+    }
+
+    @GetMapping("/contacts/findById/{id}")
+    public ResponseEntity<ContactResponse> findById(@PathVariable("id") String id) {
+        ContactResponse response = new ContactResponse();
+        try {
+            Contact result = contactService.find(id);
+            response.setRow(result);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             response.setError(e.getMessage());
