@@ -13,7 +13,7 @@ dependencies {
     implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:7.17.26')
     implementation('com.fasterxml.jackson.core:jackson-databind:2.18.2')
     testImplementation platform('org.junit:junit-bom:5.11.4')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
